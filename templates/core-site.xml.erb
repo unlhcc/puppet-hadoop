@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<!-- ##################################################################### -->
+<!-- #                                                                   # -->
+<!-- #         DO NOT EDIT - file is being maintained by puppet          # -->
+<!-- #                                                                   # -->
+<!-- ##################################################################### -->
+
+<configuration>
+  <property>
+    <name>fs.default.name</name>
+    <value>hdfs://hadoop-name:9000</value>
+  </property>
+  <property>
+    <name>dfs.replication</name>
+    <value>3</value>
+  </property>
+  <property>
+    <name>hadoop.tmp.dir</name>
+    <value>/hadoop-data1/scratch</value>
+  </property>
+  <property>
+    <name>dfs.block.size</name>
+    <value>536870912</value>
+  </property>
+  <property>
+    <name>dfs.umaskmode</name>
+    <value>002</value>
+  </property>
+  <property>
+    <name>io.bytes.per.checksum</name>
+    <value>4096</value>
+  </property>
+  <property>
+    <name>hadoop.log.dir</name>
+    <value>/var/log/hadoop</value>
+  </property>
+</configuration>

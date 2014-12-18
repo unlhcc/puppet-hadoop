@@ -1,0 +1,21 @@
+#!/bin/sh
+
+##############################################################################
+##############################################################################
+#
+#	DO NOT EDIT - file is being maintained by puppet
+#
+##############################################################################
+##############################################################################
+
+
+# Do not remove the following line, or various programs
+# that require network functionality will fail.
+HDFS_LOGDIR=/var/log/hadoop/
+COMPPROG="/usr/bin/lbzip2"
+
+# nuke any dfs logs over 30 days old
+/usr/bin/find $HDFS_LOGDIR -type f -iname "hadoop-hadoop-datanode-*.log.*" -mtime +30 -exec rm {} \;
+
+# compress any non-compressed logs remaining (bad -- but bz2 doesnt match so meh!)
+/usr/bin/find $HDFS_LOGDIR -type f -iname "hadoop-hadoop-datanode-*.log.*[0-9][0-9]" -exec $COMPPROG {} \;

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<!-- ##################################################################### -->
+<!-- #                                                                   # -->
+<!-- #         DO NOT EDIT - file is being maintained by puppet          # -->
+<!-- #                                                                   # -->
+<!-- ##################################################################### -->
+
+<configuration>
+  <property>
+    <name>mapred.job.tracker</name>
+    <value>hadoop-name:9000</value>
+  </property>
+  <property>
+    <name>mapred.map.tasks</name>
+    <value>7919</value>
+  </property>
+  <property>
+    <name>mapred.reduce.tasks</name>
+    <value>1543</value>
+  </property>
+  <property>
+    <name>mapred.tasktracker.map.tasks.maximum</name>
+    <value>4</value>
+  </property>
+  <property>
+    <name>mapred.tasktracker.reduce.tasks.maximum</name>
+    <value>4</value>
+  </property>
+  <property>
+    <name>tasktracker.http.threads</name>
+    <value>50</value>
+    <description>
+      Increased number of task tracker threads because we were running out.
+    </description>
+  </property>
+
+</configuration>
