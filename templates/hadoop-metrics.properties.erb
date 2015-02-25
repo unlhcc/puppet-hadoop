@@ -19,7 +19,7 @@
 # Pick one: Ganglia 3.0 (former) or Ganglia 3.1 (latter)
 dfs.class=org.apache.hadoop.metrics.ganglia.GangliaContext31
 dfs.period=30
-dfs.servers=<%= @gangliaUDPSendChannel[0] %>:<%= @gangliaUDPSendChannel[1] %>
+dfs.servers=<%= @ganglia_udp_send_channel[0] %>:<%= @ganglia_udp_send_channel[1] %>
 
 # Configuration of the "mapred" context for null
 mapred.class=org.apache.hadoop.metrics.spi.NullContext
@@ -48,4 +48,4 @@ mapred.class=org.apache.hadoop.metrics.spi.NullContext
 # Configuration of the "jvm" context for ganglia
 jvm.class=org.apache.hadoop.metrics.ganglia.GangliaContext31
 jvm.period=30
-jvm.servers=<%= @gangliaUDPSendChannel[0] %>:<%= @gangliaUDPSendChannel[1] %>
+jvm.servers=<%= @ganglia_udp_send_channel[0] %>:<%= @ganglia_udp_send_channel[1] %>

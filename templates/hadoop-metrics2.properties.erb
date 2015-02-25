@@ -28,7 +28,7 @@
 # See javadoc of package-info.java for org.apache.hadoop.metrics2 for details
 
 *.sink.ganglia.class=org.apache.hadoop.metrics2.sink.ganglia.GangliaSink31
-*.sink.ganglia.servers=<%= @gangliaUDPSendChannel[0] %>:<%= @gangliaUDPSendChannel[1] %>
+*.sink.ganglia.servers=<%= @ganglia_udp_send_channel[0] %>:<%= @ganglia_udp_send_channel[1] %>
 # default sampling period
 *.period=10
 
@@ -72,7 +72,6 @@ mrappmaster.sink.foo.filename=/tmp/mrappmaster-metrics.out
 # only useful when different filtering strategies are applied to each.
 nodemanager.sink.bar.filename=/tmp/nodemanager-metrics-bar.out
 
-namenode.sink.ganglia.servers=<%= @gangliaUDPSendChannel[0] %>:<%= @gangliaUDPSendChannel[1] %>
-secondarynamenode.sink.ganglia.servers=<%= @gangliaUDPSendChannel[0] %>:<%= @gangliaUDPSendChannel[1] %>
-datanode.sink.ganglia.servers=<%= @gangliaUDPSendChannel[0] %>:<%= @gangliaUDPSendChannel[1] %>
-
+namenode.sink.ganglia.servers=<%= @ganglia_udp_send_channel[0] %>:<%= @ganglia_udp_send_channel[1] %>
+secondarynamenode.sink.ganglia.servers=<%= @ganglia_udp_send_channel[0] %>:<%= @ganglia_udp_send_channel[1] %>
+datanode.sink.ganglia.servers=<%= @ganglia_udp_send_channel[0] %>:<%= @ganglia_udp_send_channel[1] %>
