@@ -2,6 +2,8 @@
 
 class hadoop::params {
 
-    $gangliaUDPSendChannel = undef
+    $datanode_service_enable = true
+    $ganglia_udp_send_channel = undef
+    $namenode_service_enable = false
 
 }
