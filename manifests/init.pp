@@ -54,7 +54,7 @@ class hadoop (
     # should only do this once, but every time won't hurt
     exec { 'chown hdfs:hadoop /hadoop-data*':
         path   => '/usr/bin:/usr/sbin:/bin',
-        onlyif => [ 'test `ls -ld /hadoop-data1 | awk '{print \$3}'` != hdfs' ],
+        onlyif => [ 'test `ls -ld /hadoop-data1 | awk "{print \$3}""` != hdfs' ],
     }
 
     # we keep our configs on a dedicated conf.red directory
@@ -150,7 +150,7 @@ class hadoop (
     exec { 'run_hadoop_conf_alt_install':
         path      => '/usr/bin:/usr/sbin:/bin',
         command   => '/usr/sbin/alternatives --install /etc/hadoop/conf hadoop-conf /etc/hadoop/conf.red 50',
-        unless    => '/usr/bin/test `/bin/ls -l /etc/alternatives/hadoop-conf | /bin/awk '{print \$11}'` = /etc/hadoop/conf.red',
+        unless    => '/usr/bin/test `/bin/ls -l /etc/alternatives/hadoop-conf | /bin/awk "{print \$11}"` = /etc/hadoop/conf.red',
         logoutput => true,
         require   => Package['hadoop'],
     }
@@ -158,7 +158,7 @@ class hadoop (
     exec { 'run_hadoop_conf_alt_link':
         path      => '/usr/bin:/usr/sbin:/bin',
         command   => '/usr/sbin/alternatives --auto hadoop-conf',
-        unless    => '/usr/bin/test `/bin/ls -l /etc/alternatives/hadoop-conf | /bin/awk '{print \$11}'` = /etc/hadoop/conf.red',
+        unless    => '/usr/bin/test `/bin/ls -l /etc/alternatives/hadoop-conf | /bin/awk "{print \$11}"` = /etc/hadoop/conf.red',
         logoutput => true,
         require   => Package['hadoop'],
     }
@@ -194,20 +194,21 @@ class hadoop (
     # Limits.conf for name node. Needed for other?
     if $namenode_service_enable {
         file { 'limits.conf':
-        path    => '/etc/security/limits.conf',
-        owner   => 'root',
-        group   => 'root',
-        mode    => '0644',
-        source  => 'puppet:///modules/hadoop/limits-name.conf',
-        require => Package['hadoop'],
-    }
+            path    => '/etc/security/limits.conf',
+            owner   => 'root',
+            group   => 'root',
+            mode    => '0644',
+            source  => 'puppet:///modules/hadoop/limits-name.conf',
+            require => Package['hadoop'],
+        }
 
-    file { '99-hdfs-limits.conf':
-        path    => '/etc/security/limits.d/99-hdfs-limits.conf',
-        owner   => 'root',
-        group   => 'root',
-        mode    => '0644',
-        source  => 'puppet:///modules/hadoop/99-hdfs-limits.conf',
-        require => Package['hadoop'],
+        file { '99-hdfs-limits.conf':
+            path    => '/etc/security/limits.d/99-hdfs-limits.conf',
+            owner   => 'root',
+            group   => 'root',
+            mode    => '0644',
+            source  => 'puppet:///modules/hadoop/99-hdfs-limits.conf',
+            require => Package['hadoop'],
+        }
     }
 }
