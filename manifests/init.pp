@@ -140,6 +140,15 @@ class hadoop (
         source  => 'puppet:///modules/hadoop/rackmap.pl',
         require => Package['hadoop'],
     }
+    
+    # Insert custom hadoop JVM memory limits for fuse
+    file { '/etc/default/hadoop-fuse':
+        owner   => 'root',
+        group   => 'root',
+        mode    => '0644',
+        source  => 'puppet:///modules/hadoop/hadoop-fuse',
+        require => Package['hadoop-fuse'],
+    }
 
 
     # ALTERNATIVES maintenance
