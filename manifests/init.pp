@@ -140,7 +140,7 @@ class hadoop (
         source  => 'puppet:///modules/hadoop/rackmap.pl',
         require => Package['hadoop'],
     }
-    
+
     # Insert custom hadoop JVM memory limits for fuse
     file { '/etc/default/hadoop-fuse':
         owner   => 'root',
@@ -191,7 +191,7 @@ class hadoop (
         }
 
         cron { 'hdfs-log-rotate':
-            ensure  => present,
+            ensure  => absent,
             command => '/usr/local/sbin/hdfs-log-rotate',
             user    => 'root',
             minute  => '45',
