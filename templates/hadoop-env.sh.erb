@@ -41,8 +41,8 @@ export HADOOP_JMX_OPTS=""
 #export HADOOP_JMX_OPTS="-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=8686 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
 
 # Command specific options appended to HADOOP_OPTS when specified
-export HADOOP_NAMENODE_OPTS="-Xmx14336m $HADOOP_JMX_OPTS $HADOOP_NAMENODE_OPTS"
-export HADOOP_SECONDARYNAMENODE_OPTS="-Xmx14336m $HADOOP_JMX_OPTS $HADOOP_SECONDARYNAMENODE_OPTS"
+export HADOOP_NAMENODE_OPTS="-XX:+UseConcMarkSweepGC -XX:ParallelGCThreads=8 -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70 -Xms24G -Xmx24G -XX:NewSize=3G -XX:MaxNewSize=3G -XX:PermSize=128M -XX:MaxPermSize=256M -verbose:gc -Xloggc:/var/log/hadoop-hdfs/gc.log-`date +'%Y%m%d%H%M'` -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -XX:ErrorFile=/var/log/hadoop-hdfs/hs_err_pid%p.log -XX:+HeapDumpOnOutOfMemoryError $HADOOP_JMX_OPTS $HADOOP_NAMENODE_OPTS"
+export HADOOP_SECONDARYNAMENODE_OPTS="-Xmx28672m $HADOOP_JMX_OPTS $HADOOP_SECONDARYNAMENODE_OPTS"
 export HADOOP_DATANODE_OPTS="-Xmx4096m $HADOOP_JMX_OPTS $HADOOP_DATANODE_OPTS"
 export HADOOP_BALANCER_OPTS="$HADOOP_BALANCER_OPTS"
 export HADOOP_JOBTRACKER_OPTS="$HADOOP_JMX_OPTS $HADOOP_JOBTRACKER_OPTS"
