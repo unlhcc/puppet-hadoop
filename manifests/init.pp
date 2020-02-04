@@ -8,6 +8,9 @@
 # [*datanode_service_enable*]
 #   Whether to enable the datanode service. Defaults to true.
 #
+# [*datanode_heap_size*]
+#   Size in MB for the $HADOOP_DATANODE_OPTS -Xmx parameter.
+#
 # [*ganglia_udp_send_channel*]
 #   Array of [hostname, port] defining where to send ganglia metrics.
 #
@@ -22,11 +25,13 @@
 #
 class hadoop (
     $datanode_service_enable  = $hadoop::params::datanode_service_enable,
+    $datanode_heap_size       = $hadoop::params::datanode_heap_size,
     $ganglia_udp_send_channel = $hadoop::params::ganglia_udp_send_channel,
     $namenode_service_enable  = $hadoop::params::namenode_service_enable,
     ) inherits hadoop::params {
 
     validate_bool($datanode_service_enable)
+    validate_integer($datanode_heap_size)
     validate_array($ganglia_udp_send_channel)
     validate_bool($namenode_service_enable)
 
