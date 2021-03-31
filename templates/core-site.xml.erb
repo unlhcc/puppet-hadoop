@@ -30,4 +30,10 @@
     <name>hadoop.log.dir</name>
     <value>/var/log/hadoop</value>
   </property>
+<% if @client_socket_factory -%>
+  <property>
+    <name>hadoop.rpc.socket.factory.class.ClientProtocol</name>
+    <value><%= @client_socket_factory %></value>
+  </property>
+<% end -%>
 </configuration>

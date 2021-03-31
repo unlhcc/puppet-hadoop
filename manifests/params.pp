@@ -16,4 +16,7 @@ class hadoop::params {
     $ganglia_udp_send_channel = undef
     $namenode_service_enable = false
 
+    # hadoop.rpc.socket.factory.class.ClientProtocol
+    $client_socket_factory = undef
+
 }

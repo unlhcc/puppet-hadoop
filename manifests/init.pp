@@ -17,6 +17,10 @@
 # [*namenode_service_enable*]
 #   Whether to enable the namenode service. Defaults to false.
 #
+# [*client_socket_factory*]
+#   Optional parameter for hadoop.rpc.socket.factory.class.ClientProtocol.
+#   Defaults to undef.
+#
 # Actions:
 #
 # Requires:
@@ -28,6 +32,7 @@ class hadoop (
     $datanode_heap_size       = $hadoop::params::datanode_heap_size,
     $ganglia_udp_send_channel = $hadoop::params::ganglia_udp_send_channel,
     $namenode_service_enable  = $hadoop::params::namenode_service_enable,
+    $client_socket_factory    = $hadoop::params::client_socket_factory,
     ) inherits hadoop::params {
 
     validate_bool($datanode_service_enable)
